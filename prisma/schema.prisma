@@ -1,0 +1,315 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  SUBSCRIBER
+}
+
+model User {
+  id                   Int                   @id @default(autoincrement())
+  name                 String
+  email                String                @unique
+  password             String
+  phone                String?
+  profileImage         String?
+  role                 Role                  @default(SUBSCRIBER)
+  suspended            Boolean               @default(false)
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  incomes              Income[]
+  expenses             Expense[]
+  goals                Goal[]
+  workSessions         WorkSession[]
+  notifications        Notification[]
+  activityLogs         ActivityLog[]
+  vehicles             Vehicle[]
+  maintenanceItems     MaintenanceItem[]
+  alertSettings        AlertSetting[]
+  notificationSettings NotificationSetting[]
+  supportTickets       SupportTicket[]
+  ticketResponses      TicketResponse[]
+
+  @@map("user")
+}
+
+model Goal {
+  id          Int    @id @default(autoincrement())
+  month       String
+  targetAmount Float
+  userId      Int
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@unique([userId, month])
+  @@index([userId])
+  @@map("goal")
+}
+
+model WorkSession {
+  id        Int      @id @default(autoincrement())
+  date      String
+  startTime String
+  endTime   String?
+  company   String
+  notes     String?  @db.Text
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([date])
+  @@map("worksession")
+}
+
+model ActivityLog {
+  id        Int      @id @default(autoincrement())
+  action    String
+  details   String?  @db.Text
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("activitylog")
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  title     String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("notification")
+}
+
+model Income {
+  id        Int      @id @default(autoincrement())
+  date      String
+  company   String
+  amount    Float
+  notes     String?  @db.Text
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([date])
+  @@map("income")
+}
+
+model Expense {
+  id             Int      @id @default(autoincrement())
+  date           String
+  category       String
+  customCategory String?
+  amount         Float
+  notes          String?  @db.Text
+  userId         Int
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+
+  @@index([userId])
+  @@index([date])
+  @@map("expense")
+}
+
+model Vehicle {
+  id              Int               @id @default(autoincrement())
+  name            String
+  model           String
+  year            Int
+  licensePlate    String?
+  odometer        Float             @default(0)
+  avgConsumption  Float             @default(0)
+  isActive        Boolean           @default(true)
+  userId          Int
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  maintenanceItems MaintenanceItem[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  @@index([userId])
+  @@map("vehicle")
+}
+
+model MaintenanceItem {
+  id            Int      @id @default(autoincrement())
+  name          String
+  nameAr        String
+  lastChangedAt String?
+  nextDueKm     Float?
+  currentKm     Float?
+  remainingPct  Int      @default(100)
+  status        String   @default("good")
+  enabled       Boolean  @default(true)
+  vehicleId     Int
+  vehicle       Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
+  @@index([vehicleId])
+  @@map("maintenanceitem")
+}
+
+model AlertSetting {
+  id          Int      @id @default(autoincrement())
+  alertType   String
+  nameAr      String
+  enabled     Boolean  @default(true)
+  limitAmount Float?
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, alertType])
+  @@index([userId])
+  @@map("alertsetting")
+}
+
+model NotificationSetting {
+  id          Int      @id @default(autoincrement())
+  settingType String
+  enabled     Boolean  @default(true)
+  timeValue   String?
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, settingType])
+  @@index([userId])
+  @@map("notificationsetting")
+}
+
+enum AdType {
+  BANNER_TEXT
+  BANNER_LINK
+  BANNER_VIDEO
+}
+
+model Ad {
+  id          Int      @id @default(autoincrement())
+  title       String
+  type        AdType   @default(BANNER_TEXT)
+  imageUrl    String   @db.Text
+  text        String?  @db.Text
+  linkUrl     String?  @db.Text
+  videoUrl    String?  @db.Text
+  active      Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([active])
+  @@index([order])
+  @@map("ad")
+}
+
+model Settings {
+  id          Int      @id @default(autoincrement())
+  key         String   @unique
+  value       String   @db.Text
+  description String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   Int?
+
+  @@index([key])
+  @@map("settings")
+}
+
+model Company {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  nameAr      String
+  logo        String?  @db.Text
+  color       String   @default("#6366f1")
+  commission  Float    @default(0)
+  active      Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([active])
+  @@index([order])
+  @@map("company")
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+model SupportTicket {
+  id          Int          @id @default(autoincrement())
+  subject     String
+  message     String       @db.Text
+  status      TicketStatus @default(OPEN)
+  priority    TicketPriority @default(MEDIUM)
+  category    String
+  userId      Int
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  responses   TicketResponse[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  resolvedAt  DateTime?
+  resolvedBy  Int?
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("supportticket")
+}
+
+model TicketResponse {
+  id          Int          @id @default(autoincrement())
+  message     String       @db.Text
+  isAdmin     Boolean      @default(false)
+  ticketId    Int
+  ticket      SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  userId      Int
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime     @default(now())
+
+  @@index([ticketId])
+  @@index([userId])
+  @@map("ticketresponse")
+}
+
+model ErrorLog {
+  id          Int      @id @default(autoincrement())
+  message     String   @db.Text
+  stack       String?  @db.Text
+  route       String?
+  userId      Int?
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([userId])
+  @@map("errorlog")
+}

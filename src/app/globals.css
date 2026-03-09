@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #f6f8f7;
+  --foreground: #1a202c;
+  --primary: #16a34a;
+  --primary-light: #22c55e;
+  --primary-dark: #15803d;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --muted: #6b7280;
+  --accent: #f0fdf4;
+  --input-bg: #f9fafb;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --gradient-start: #16a34a;
+  --gradient-end: #22c55e;
+}
+
+.dark {
+  --background: #112117;
+  --foreground: #e2e8f0;
+  --primary: #20df6c;
+  --primary-light: #4ade80;
+  --primary-dark: #16a34a;
+  --success: #20df6c;
+  --danger: #ef4444;
+  --warning: #fbbf24;
+  --card: #1c2e24;
+  --border: rgba(255, 255, 255, 0.08);
+  --muted: #94a3b8;
+  --accent: #1c2e24;
+  --input-bg: #203328;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --gradient-start: #16a34a;
+  --gradient-end: #20df6c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-input-bg: var(--input-bg);
+  --color-shadow: var(--shadow);
+  --font-sans: 'Cairo', sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Cairo', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+input, select, textarea, button {
+  font-family: 'Cairo', sans-serif;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+}
+
+.glass-card {
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px var(--shadow);
+}
