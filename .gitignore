@@ -51,7 +51,7 @@ next-env.d.ts
 /dist/
 
 # Database backups
-*-utf8.sql
+*.sql
 
 # Mobile app (separate project)
 
