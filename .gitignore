@@ -50,6 +50,9 @@ next-env.d.ts
 # Build output
 /dist/
 
+# Database backups
+*-utf8.sql
+
 # Mobile app (separate project)
 
 # Unnecessary files

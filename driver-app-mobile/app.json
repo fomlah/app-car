@@ -22,9 +22,18 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.driverappmobile",
-      "usesCleartextTraffic": true
+      "package": "com.anonymous.driverappmobile"
     },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     },
@@ -32,6 +41,9 @@
       "eas": {
         "projectId": "60e31754-65dc-4b0a-aaca-e08551c37cc0"
       }
-    }
+    },
+    "plugins": [
+      "expo-build-properties"
+    ]
   }
 }
