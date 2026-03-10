@@ -53,9 +53,9 @@ function fmtDate(d: Date): string {
 }
 
 function parseLocalDate(dateStr: string): Date {
-  // IMPORTANT: new Date('YYYY-MM-DD') is treated as UTC by JS and can shift the day.
-  // date-fns parseISO treats it as local time.
-  return parseISO(dateStr);
+  if (!dateStr) return new Date();
+  const d = parseISO(dateStr);
+  return isNaN(d.getTime()) ? new Date() : d;
 }
 
 export default function ReportsPage() {
@@ -232,11 +232,10 @@ export default function ReportsPage() {
     };
   }, [categoryData]);
 
-  // Recent transactions
   const recentTx = useMemo(() => {
     const all: RecentTx[] = [
-      ...periodIncomes.map(i => ({ id: `i-${i.id}`, type: 'income' as const, label: i.company, amount: i.amount, date: i.date, company: i.company })),
-      ...periodExpenses.map(e => ({ id: `e-${e.id}`, type: 'expense' as const, label: getCategoryLabel(e.category, e.customCategory || undefined), amount: e.amount, date: e.date, catId: e.category })),
+      ...periodIncomes.map(i => ({ id: `i-${i.id}`, type: 'income' as const, label: i.company, amount: i.amount, date: i.date || '', company: i.company })),
+      ...periodExpenses.map(e => ({ id: `e-${e.id}`, type: 'expense' as const, label: getCategoryLabel(e.category, e.customCategory || undefined), amount: e.amount, date: e.date || '', catId: e.category })),
     ];
     all.sort((a, b) => b.date.localeCompare(a.date));
     return all.slice(0, 8);

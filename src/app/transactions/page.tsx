@@ -43,7 +43,9 @@ function fmtDate(d: Date): string {
 }
 
 function parseLocalDate(dateStr: string): Date {
-  return parseISO(dateStr);
+  if (!dateStr) return new Date();
+  const d = parseISO(dateStr);
+  return isNaN(d.getTime()) ? new Date() : d;
 }
 
 export default function TransactionsPage() {
@@ -94,16 +96,16 @@ export default function TransactionsPage() {
     incomes.forEach((i) => {
       const dbC = companies.find(c => c.name === i.company);
       all.push({
-        id: i.id, type: 'income', date: i.date, amount: i.amount,
+        id: i.id, type: 'income', date: i.date || '', amount: i.amount,
         label: dbC?.nameAr || i.company, icon: dbC?.logo || (dbC ? (dbC.nameAr?.[0] || i.company?.[0]) : (i.company === 'Uber' ? '🚗' : i.company === 'Didi' ? '🟠' : '🟢')),
-        notes: i.notes || '', company: i.company, createdAt: i.createdAt,
+        notes: i.notes || '', company: i.company, createdAt: i.createdAt || '',
       });
     });
     expenses.forEach((e) => all.push({
-      id: e.id, type: 'expense', date: e.date, amount: e.amount,
+      id: e.id, type: 'expense', date: e.date || '', amount: e.amount,
       label: getCategoryLabel(e.category, e.customCategory || undefined),
       icon: getCategoryIcon(e.category), notes: e.notes || '',
-      category: e.category, customCategory: e.customCategory || undefined, createdAt: e.createdAt,
+      category: e.category, customCategory: e.customCategory || undefined, createdAt: e.createdAt || '',
     }));
 
     let filtered = all;
