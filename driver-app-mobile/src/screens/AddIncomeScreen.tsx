@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, ScrollView, Alert, } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView, Alert, Platform } from 'react-native';
 import Text from '../components/CustomText';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../contexts/ThemeContext';
 import { useIncomes, useCompanies } from '../hooks/useData';
 import { COMPANY_COLORS } from '../constants/theme';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const MONTH_NAMES = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
 
@@ -23,11 +24,12 @@ export default function AddIncomeScreen({ navigation }: any) {
   const [selectedPlatform, setSelectedPlatform] = useState('');
   const [amount, setAmount] = useState('0');
   const [date, setDate] = useState(new Date());
+  const [showPicker, setShowPicker] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  const today = new Date();
-  const dateStr = `${today.getDate()} ${MONTH_NAMES[today.getMonth()]}`;
+  const isToday = new Date().toDateString() === date.toDateString();
+  const dateStr = `${date.getDate()} ${MONTH_NAMES[date.getMonth()]}`;
 
   const handleKeyPress = (key: string) => {
     if (key === 'back') {
@@ -89,13 +91,28 @@ export default function AddIncomeScreen({ navigation }: any) {
             </View>
             <View>
               <Text style={[styles.dateLabel, { color: colors.muted }]}>التاريخ</Text>
-              <Text style={[styles.dateValue, { color: colors.foreground }]}>اليوم، {dateStr}</Text>
+              <Text style={[styles.dateValue, { color: colors.foreground }]}>{isToday ? 'اليوم، ' : ''}{dateStr}</Text>
             </View>
           </View>
-          <TouchableOpacity style={[styles.changeDateBtn, { backgroundColor: colors.accent, borderColor: colors.border }]}>
+          <TouchableOpacity
+            style={[styles.changeDateBtn, { backgroundColor: colors.accent, borderColor: colors.border }]}
+            onPress={() => setShowPicker(true)}
+          >
             <Text style={[styles.changeDateText, { color: colors.foreground }]}>تغيير</Text>
           </TouchableOpacity>
         </View>
+
+        {showPicker && (
+          <DateTimePicker
+            value={date}
+            mode="date"
+            display="default"
+            onChange={(event, selectedDate) => {
+              setShowPicker(Platform.OS === 'ios');
+              if (selectedDate) setDate(selectedDate);
+            }}
+          />
+        )}
 
         {/* Platform Selection */}
         <Text style={[styles.sectionLabel, { color: colors.foreground }]}>اختر المنصة</Text>

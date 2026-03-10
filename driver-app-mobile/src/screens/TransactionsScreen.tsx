@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { View, TouchableOpacity, StyleSheet, ScrollView, Modal, Alert, ActivityIndicator, RefreshControl, Platform, } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView, Modal, Alert, ActivityIndicator, RefreshControl, Platform } from 'react-native';
 import Text from '../components/CustomText';
 import TextInput from '../components/CustomTextInput';
 
@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../contexts/ThemeContext';
 import { useIncomes, useExpenses, useCompanies, Income, Expense, Company } from '../hooks/useData';
 import { COMPANY_COLORS, EXPENSE_CATEGORIES, getCategoryLabel, getCategoryIcon } from '../constants/theme';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 // Cross-platform confirm dialog
 function confirmDelete(title: string, message: string, onConfirm: () => void) {
@@ -94,6 +95,7 @@ export default function TransactionsScreen({ navigation }: any) {
   const [editNotes, setEditNotes] = useState('');
   const [editCompany, setEditCompany] = useState('');
   const [editCategory, setEditCategory] = useState('');
+  const [showEditPicker, setShowEditPicker] = useState(false);
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
@@ -443,14 +445,24 @@ export default function TransactionsScreen({ navigation }: any) {
               />
 
               <Text style={[styles.fieldLabel, { color: colors.primary }]}>التاريخ</Text>
-              <TextInput
-                style={[styles.fieldInput, { backgroundColor: colors.accent, color: colors.foreground, borderColor: colors.border }]}
-                value={editDate}
-                onChangeText={setEditDate}
-                placeholder="YYYY-MM-DD"
-                placeholderTextColor={colors.muted}
-                textAlign="right"
-              />
+              <TouchableOpacity
+                style={[styles.fieldInput, { backgroundColor: colors.accent, borderColor: colors.border, justifyContent: 'center' }]}
+                onPress={() => setShowEditPicker(true)}
+              >
+                <Text style={{ color: colors.foreground, fontSize: 16 }}>{editDate}</Text>
+              </TouchableOpacity>
+
+              {showEditPicker && (
+                <DateTimePicker
+                  value={new Date(editDate || new Date())}
+                  mode="date"
+                  display="default"
+                  onChange={(event, selectedDate) => {
+                    setShowEditPicker(Platform.OS === 'ios');
+                    if (selectedDate) setEditDate(fmtDate(selectedDate));
+                  }}
+                />
+              )}
 
               {editItem?.type === 'income' && (
                 <>

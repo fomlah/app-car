@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, ScrollView, Alert,  } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView, Alert, Platform } from 'react-native';
 import Text from '../components/CustomText';
 import TextInput from '../components/CustomTextInput';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../contexts/ThemeContext';
 import { useExpenses } from '../hooks/useData';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const CATEGORIES = [
   { id: 'fuel', label: 'وقود', icon: 'flame', color: '#20df6c' },
@@ -29,7 +30,8 @@ export default function AddExpenseScreen({ navigation }: any) {
   const [customCategory, setCustomCategory] = useState('');
   const [amount, setAmount] = useState('');
   const [notes, setNotes] = useState('');
-  const [date, setDate] = useState(formatDate(new Date()));
+  const [date, setDate] = useState(new Date());
+  const [showPicker, setShowPicker] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
@@ -45,7 +47,7 @@ export default function AddExpenseScreen({ navigation }: any) {
         category: selectedCategory,
         customCategory: selectedCategory === 'other' ? customCategory.trim() : undefined,
         amount: numAmount,
-        date,
+        date: formatDate(date),
         notes,
       });
       setSaved(true);
@@ -146,20 +148,34 @@ export default function AddExpenseScreen({ navigation }: any) {
           <Text style={[styles.sectionTitle, { color: colors.foreground }]}>التفاصيل</Text>
 
           {/* Date */}
-          <View style={[styles.detailRow, { backgroundColor: colors.card, borderColor: colors.border }]}>
+          <TouchableOpacity
+            style={[styles.detailRow, { backgroundColor: colors.card, borderColor: colors.border }]}
+            onPress={() => setShowPicker(true)}
+            activeOpacity={0.7}
+          >
             <View style={[styles.detailIconBox, { backgroundColor: colors.accent }]}>
               <Ionicons name="calendar-outline" size={20} color={colors.primary} />
             </View>
             <View style={styles.detailInfo}>
               <Text style={[styles.detailLabel, { color: colors.muted }]}>التاريخ</Text>
-              <TextInput
-                style={[styles.detailValue, { color: colors.foreground }]}
-                value={date}
-                onChangeText={setDate}
-              />
+              <Text style={[styles.detailValue, { color: colors.foreground }]}>
+                {formatDate(date)}
+              </Text>
             </View>
             <Ionicons name="chevron-forward" size={18} color={colors.muted} />
-          </View>
+          </TouchableOpacity>
+
+          {showPicker && (
+            <DateTimePicker
+              value={date}
+              mode="date"
+              display="default"
+              onChange={(event, selectedDate) => {
+                setShowPicker(Platform.OS === 'ios');
+                if (selectedDate) setDate(selectedDate);
+              }}
+            />
+          )}
 
           {/* Notes */}
           <View style={[styles.detailRow, { backgroundColor: colors.card, borderColor: colors.border }]}>
