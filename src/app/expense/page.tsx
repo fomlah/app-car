@@ -125,22 +125,31 @@ export default function ExpensePage() {
             {EXPENSE_CATEGORIES.map((cat) => {
               const icon = getCategoryIcon(cat.id);
               const isSelected = category === cat.id;
+              const bgColor = '#ef4444'; // danger color
               return (
                 <button
                   key={cat.id}
                   onClick={() => setCategory(cat.id)}
-                  className={`flex flex-col items-center justify-center p-6 rounded-[2rem] border-2 transition-all duration-500 ${isSelected
-                      ? 'bg-danger/5 border-danger shadow-xl shadow-danger/5 scale-[1.02]'
-                      : 'border-transparent bg-card hover:bg-accent/50'
+                  className={`group relative flex flex-col items-center justify-center p-6 rounded-[2rem] border transition-all duration-300 ${isSelected
+                    ? 'border-transparent shadow-lg scale-105'
+                    : 'border-border/20 bg-card/40 hover:bg-accent/40 backdrop-blur-sm'
                     }`}
+                  style={isSelected ? { backgroundColor: `${bgColor}15`, boxShadow: `0 8px 30px -4px ${bgColor}40`, borderColor: `${bgColor}50` } : {}}
                 >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl transition-transform duration-500 ${isSelected ? 'bg-danger text-white shadow-lg' : 'bg-accent text-muted'
+                  <div className={`w-14 h-14 rounded-[1.2rem] flex items-center justify-center mb-3 text-2xl group-hover:scale-105 transition-transform duration-500 shadow-md ring-1 ring-black/5 dark:ring-white/10 ${isSelected ? 'bg-danger text-white' : 'bg-accent text-muted'
                     }`}>
                     {icon}
                   </div>
                   <span className={`text-[11px] font-black transition-colors duration-300 ${isSelected ? 'text-foreground' : 'text-muted'}`}>
                     {LABELS.common[cat.id as keyof typeof LABELS.common] || cat.label}
                   </span>
+                  {isSelected && (
+                    <div
+                      className="absolute -top-1.5 -right-1.5 w-7 h-7 bg-danger rounded-full flex items-center justify-center shadow-md animate-in zoom-in duration-300 ring-2 ring-background"
+                    >
+                      <Check size={14} className="text-white" strokeWidth={4} />
+                    </div>
+                  )}
                 </button>
               );
             })}
@@ -188,8 +197,8 @@ export default function ExpensePage() {
             onClick={handleSave}
             disabled={!isValid || saving}
             className={`pointer-events-auto w-full group relative h-16 rounded-full font-black text-lg transition-all duration-500 active:scale-[0.95] ${isValid && !saving
-                ? 'bg-danger text-white shadow-[0_20px_50px_rgba(239,68,68,0.4)] hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(239,68,68,0.5)]'
-                : 'bg-muted/20 text-muted cursor-not-allowed opacity-50 shadow-none'
+              ? 'bg-danger text-white shadow-[0_20px_50px_rgba(239,68,68,0.4)] hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(239,68,68,0.5)]'
+              : 'bg-muted/20 text-muted cursor-not-allowed opacity-50 shadow-none'
               }`}
           >
             <div className="flex items-center justify-center gap-3 relative z-10">

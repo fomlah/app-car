@@ -194,18 +194,39 @@ export default function WorkSessionsPage() {
             onChange={(e) => setDate(e.target.value)}
             className="w-full bg-input-bg border border-border rounded-xl px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
           />
-          <div className="grid grid-cols-3 gap-2">
-            {companies.map((c) => (
-              <button
-                key={c.id}
-                onClick={() => setCompany(c.name)}
-                className={`rounded-lg border-2 p-2 text-xs font-bold transition-all ${company === c.name ? `text-white border-transparent shadow-md` : 'bg-card border-border text-foreground'
-                  }`}
-                style={company === c.name ? { backgroundColor: c.color || '#6366f1' } : {}}
-              >
-                {c.nameAr || c.name}
-              </button>
-            ))}
+          <div className="grid grid-cols-3 gap-3">
+            {companies.map((c) => {
+              const isSelected = company === c.name;
+              const bgColor = c.color || '#6366f1';
+              return (
+                <button
+                  key={c.id}
+                  onClick={() => setCompany(c.name)}
+                  className={`group relative flex flex-col items-center justify-center p-3 rounded-2xl border transition-all duration-300 ${isSelected ? 'border-transparent shadow-lg scale-105' : 'border-border/20 bg-card/40 hover:bg-accent/40 backdrop-blur-sm'
+                    }`}
+                  style={isSelected ? { backgroundColor: `${bgColor}20`, boxShadow: `0 8px 30px -4px ${bgColor}40`, borderColor: `${bgColor}50` } : {}}
+                >
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-2 shadow-sm group-hover:scale-105 transition-transform duration-500 overflow-hidden ring-1 ring-black/5 dark:ring-white/10" style={{ backgroundColor: c.logo ? 'white' : bgColor }}>
+                    {c.logo ? (
+                      <div className="w-full h-full p-1.5 flex items-center justify-center">
+                        <img src={c.logo} alt={c.nameAr || c.name} className="w-full h-full object-contain drop-shadow-sm" />
+                      </div>
+                    ) : (
+                      <span className="font-black text-xs text-white tracking-tighter">{c.nameAr?.[0] || c.name[0]}</span>
+                    )}
+                  </div>
+                  <span className={`text-[10px] font-black transition-colors ${isSelected ? 'text-foreground' : 'text-muted'}`}>{c.nameAr || c.name}</span>
+                  {isSelected && (
+                    <div
+                      className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-in zoom-in duration-300 ring-2 ring-background"
+                      style={{ backgroundColor: bgColor }}
+                    >
+                      <Check size={10} className="text-white" strokeWidth={4} />
+                    </div>
+                  )}
+                </button>
+              );
+            })}
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div>

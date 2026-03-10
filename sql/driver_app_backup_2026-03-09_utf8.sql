@@ -29,10 +29,10 @@ CREATE TABLE `activitylog` (
   `userId` int NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
-  KEY `activitylog_userId_idx` (`userId`),
-  KEY `activitylog_createdAt_idx` (`createdAt`),
-  CONSTRAINT `activitylog_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=219 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `ActivityLog_userId_idx` (`userId`),
+  KEY `ActivityLog_createdAt_idx` (`createdAt`),
+  CONSTRAINT `ActivityLog_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=218 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `activitylog` (
 
 LOCK TABLES `activitylog` WRITE;
 /*!40000 ALTER TABLE `activitylog` DISABLE KEYS */;
-INSERT INTO `activitylog` VALUES (1,'LOGIN','تسجيل دخول',1,'2026-02-06 22:12:33.357'),(2,'LOGIN','تسجيل دخول',1,'2026-02-06 22:12:55.040'),(3,'LOGIN','تسجيل دخول',1,'2026-02-06 22:13:02.414'),(4,'LOGIN','تسجيل دخول',1,'2026-02-06 22:24:03.432'),(5,'LOGIN','تسجيل دخول',1,'2026-02-06 22:27:29.712'),(6,'LOGIN','تسجيل دخول',1,'2026-02-06 22:48:54.104'),(7,'LOGIN','تسجيل دخول',1,'2026-02-06 22:50:55.276'),(8,'LOGIN','تسجيل دخول',1,'2026-02-06 22:50:55.430'),(9,'LOGIN','تسجيل دخول',1,'2026-02-06 22:54:17.785'),(10,'LOGIN','تسجيل دخول',1,'2026-02-06 22:55:12.936'),(11,'LOGIN','تسجيل دخول',1,'2026-02-06 22:55:25.466'),(12,'LOGIN','تسجيل دخول',1,'2026-02-06 22:56:06.195'),(13,'LOGIN','تسجيل دخول',1,'2026-02-06 22:56:14.642'),(14,'LOGIN','تسجيل دخول',1,'2026-02-06 22:57:22.655'),(15,'LOGIN','تسجيل دخول',1,'2026-02-06 23:03:00.387'),(16,'LOGIN','تسجيل دخول',1,'2026-02-06 23:17:22.703'),(17,'LOGIN','تسجيل دخول',1,'2026-02-07 00:05:21.007'),(18,'LOGIN','تسجيل دخول',1,'2026-02-07 00:06:42.657'),(19,'LOGIN','تسجيل دخول',1,'2026-02-07 00:18:59.479'),(20,'LOGIN','تسجيل دخول',1,'2026-02-07 00:19:31.601'),(21,'LOGIN','تسجيل دخول',1,'2026-02-07 00:19:39.565'),(22,'LOGIN','تسجيل دخول',1,'2026-02-07 00:19:56.660'),(23,'LOGIN','تسجيل دخول',1,'2026-02-07 00:20:51.078'),(24,'LOGIN','تسجيل دخول',1,'2026-02-07 00:27:14.237'),(25,'LOGIN','تسجيل دخول',1,'2026-02-07 00:27:40.388'),(26,'LOGIN','تسجيل دخول',1,'2026-02-07 00:29:32.875'),(27,'LOGIN','تسجيل دخول',1,'2026-02-07 00:32:42.337'),(28,'LOGIN','تسجيل دخول',1,'2026-02-07 00:33:09.466'),(29,'LOGIN','تسجيل دخول',1,'2026-02-07 00:34:26.166'),(30,'LOGIN','تسجيل دخول',1,'2026-02-07 00:34:34.535'),(31,'LOGIN','تسجيل دخول',1,'2026-02-07 00:34:43.394'),(32,'LOGIN','تسجيل دخول',1,'2026-02-07 00:35:07.256'),(33,'LOGIN','تسجيل دخول',1,'2026-02-07 00:35:11.527'),(34,'LOGIN','تسجيل دخول',1,'2026-02-07 00:35:32.437'),(35,'ADMIN_USER_EDIT','تعديل بيانات المستخدم #2: ahmed magdi',1,'2026-02-07 00:36:11.860'),(36,'LOGIN','تسجيل دخول',1,'2026-02-07 00:36:33.582'),(37,'ADMIN_USER_EDIT','تعديل بيانات المستخدم #2: ahmed magdi',1,'2026-02-07 00:36:33.693'),(38,'LOGIN','تسجيل دخول',2,'2026-02-07 00:36:40.960'),(39,'LOGIN','تسجيل دخول',1,'2026-02-07 01:18:47.560'),(40,'LOGIN','تسجيل دخول',2,'2026-02-07 01:21:14.760'),(41,'LOGIN','تسجيل دخول',2,'2026-02-07 01:31:51.760'),(42,'LOGIN','تسجيل دخول',2,'2026-02-07 01:36:40.715'),(43,'LOGIN','تسجيل دخول',2,'2026-02-07 01:42:19.438'),(44,'LOGIN','تسجيل دخول',2,'2026-02-07 01:50:28.813'),(45,'LOGIN','تسجيل دخول',2,'2026-02-07 01:51:09.465'),(46,'LOGIN','تسجيل دخول',2,'2026-02-07 01:56:00.710'),(47,'LOGIN','تسجيل دخول',1,'2026-02-13 16:41:18.780'),(48,'LOGIN','تسجيل دخول',2,'2026-02-13 16:45:58.111'),(49,'LOGIN','تسجيل دخول',2,'2026-02-13 17:20:54.056'),(50,'LOGIN','تسجيل دخول',2,'2026-02-13 17:30:20.085'),(51,'LOGIN','تسجيل دخول',2,'2026-02-13 17:30:24.875'),(52,'LOGIN','تسجيل دخول',2,'2026-02-13 17:30:37.564'),(53,'LOGIN','تسجيل دخول',2,'2026-02-13 17:30:38.286'),(54,'LOGIN','تسجيل دخول',2,'2026-02-13 17:31:09.757'),(55,'LOGIN','تسجيل دخول',2,'2026-02-13 17:31:41.024'),(56,'LOGIN','تسجيل دخول',1,'2026-02-14 10:14:01.351'),(57,'LOGIN','تسجيل دخول',2,'2026-02-14 10:16:20.452'),(58,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 10:53:00.704'),(59,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 10:53:45.417'),(60,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-14 10:54:22.170'),(61,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 10:55:59.524'),(62,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 10:56:41.536'),(63,'EXPENSE_ADD','إضافة مصروف: 660 ج.م',2,'2026-02-14 10:57:55.128'),(64,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 11:00:17.397'),(65,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 11:01:04.610'),(66,'EXPENSE_ADD','إضافة مصروف: 585 ج.م',2,'2026-02-14 11:02:22.318'),(67,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 12:21:17.927'),(68,'INCOME_DELETE','حذف دخل #74',2,'2026-02-14 12:21:39.563'),(69,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 12:22:02.558'),(70,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 12:22:36.850'),(71,'EXPENSE_ADD','إضافة مصروف: 547 ج.م',2,'2026-02-14 12:25:45.563'),(72,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 12:27:08.088'),(73,'EXPENSE_ADD','إضافة مصروف: 770 ج.م',2,'2026-02-14 12:28:20.798'),(74,'EXPENSE_ADD','إضافة مصروف: 2950 ج.م',2,'2026-02-14 12:28:56.411'),(75,'LOGIN','تسجيل دخول',1,'2026-02-14 18:15:53.603'),(76,'LOGIN','تسجيل دخول',2,'2026-02-14 18:16:52.309'),(77,'LOGIN','تسجيل دخول',2,'2026-02-14 18:36:20.018'),(78,'EXPENSE_ADD','إضافة مصروف: 10000 ج.م',2,'2026-02-14 18:54:41.328'),(79,'EXPENSE_UPDATE','تعديل مصروف #49',2,'2026-02-14 18:57:25.124'),(80,'EXPENSE_UPDATE','تعديل مصروف #51',2,'2026-02-14 19:03:21.572'),(81,'INCOME_DELETE','حذف دخل #132',2,'2026-02-14 19:23:29.338'),(82,'EXPENSE_DELETE','حذف مصروف #51',2,'2026-02-14 19:23:36.541'),(83,'EXPENSE_ADD','إضافة مصروف: 10000 ج.م',2,'2026-02-14 19:25:41.962'),(84,'EXPENSE_UPDATE','تعديل مصروف #52',2,'2026-02-14 19:27:00.908'),(85,'LOGIN','تسجيل دخول',2,'2026-02-14 19:48:25.410'),(86,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 19:55:59.015'),(87,'INCOME_UPDATE','تعديل دخل #133',2,'2026-02-14 19:56:20.793'),(88,'LOGIN','تسجيل دخول',2,'2026-02-14 20:07:04.818'),(89,'EXPENSE_ADD','إضافة مصروف: 675 ج.م',2,'2026-02-14 20:08:22.538'),(90,'EXPENSE_DELETE','حذف مصروف #43',2,'2026-02-14 20:10:22.522'),(91,'EXPENSE_UPDATE','تعديل مصروف #38',2,'2026-02-14 20:11:17.313'),(92,'EXPENSE_UPDATE','تعديل مصروف #47',2,'2026-02-14 20:11:45.967'),(93,'EXPENSE_UPDATE','تعديل مصروف #47',2,'2026-02-14 20:11:55.807'),(94,'EXPENSE_ADD','إضافة مصروف: 735 ج.م',2,'2026-02-14 20:14:05.055'),(95,'EXPENSE_UPDATE','تعديل مصروف #29',2,'2026-02-14 20:14:53.628'),(96,'EXPENSE_UPDATE','تعديل مصروف #28',2,'2026-02-14 20:15:07.118'),(97,'EXPENSE_ADD','إضافة مصروف: 600 ج.م',2,'2026-02-14 20:17:03.038'),(98,'EXPENSE_DELETE','حذف مصروف #25',2,'2026-02-14 20:37:43.261'),(99,'EXPENSE_DELETE','حذف مصروف #39',2,'2026-02-14 20:42:32.637'),(100,'EXPENSE_UPDATE','تعديل مصروف #54',2,'2026-02-14 20:44:56.827'),(101,'EXPENSE_UPDATE','تعديل مصروف #54',2,'2026-02-14 20:45:17.816'),(102,'EXPENSE_UPDATE','تعديل مصروف #54',2,'2026-02-14 20:45:35.936'),(103,'EXPENSE_DELETE','حذف مصروف #32',2,'2026-02-14 20:46:06.872'),(104,'EXPENSE_UPDATE','تعديل مصروف #44',2,'2026-02-14 20:48:07.492'),(105,'LOGIN','تسجيل دخول',2,'2026-02-14 20:55:13.365'),(106,'INCOME_UPDATE','تعديل دخل #126',2,'2026-02-14 21:00:30.028'),(107,'EXPENSE_UPDATE','تعديل مصروف #42',2,'2026-02-14 21:02:26.174'),(108,'EXPENSE_UPDATE','تعديل مصروف #48',2,'2026-02-14 21:17:26.504'),(109,'EXPENSE_DELETE','حذف مصروف #53',2,'2026-02-14 21:56:39.105'),(110,'EXPENSE_ADD','إضافة مصروف: 664 ج.م',2,'2026-02-14 22:02:46.367'),(111,'EXPENSE_ADD','إضافة مصروف: 750 ج.م',2,'2026-02-14 22:03:15.630'),(112,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-14 22:03:29.171'),(113,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:05:54.785'),(114,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:06:09.565'),(115,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:06:27.346'),(116,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:06:42.993'),(117,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:07:03.647'),(118,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:07:31.586'),(119,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:07:46.012'),(120,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:07:57.856'),(121,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:08:04.555'),(122,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:10:12.737'),(123,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:10:41.483'),(124,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:10:57.601'),(125,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:11:04.507'),(126,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:11:13.899'),(127,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:13:58.576'),(128,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:14:25.003'),(129,'INCOME_UPDATE','تعديل دخل #148',2,'2026-02-14 22:15:32.097'),(130,'INCOME_UPDATE','تعديل دخل #148',2,'2026-02-14 22:15:46.179'),(131,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:17:16.162'),(132,'INCOME_UPDATE','تعديل دخل #150',2,'2026-02-14 22:18:32.731'),(133,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:19:10.994'),(134,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:19:25.002'),(135,'EXPENSE_ADD','إضافة مصروف: 85 ج.م',2,'2026-02-14 22:40:06.465'),(136,'EXPENSE_UPDATE','تعديل مصروف #59',2,'2026-02-14 22:49:31.968'),(137,'LOGIN','تسجيل دخول',2,'2026-02-20 18:00:45.861'),(138,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:02:25.556'),(139,'INCOME_UPDATE','تعديل دخل #153',2,'2026-02-20 18:02:47.017'),(140,'INCOME_DELETE','حذف دخل #153',2,'2026-02-20 18:02:57.474'),(141,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:03:14.096'),(142,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:03:31.507'),(143,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:03:44.532'),(144,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:04:05.985'),(145,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:08:31.797'),(146,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:08:52.055'),(147,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:09:36.046'),(148,'EXPENSE_ADD','إضافة مصروف: 120 ج.م',2,'2026-02-20 18:10:40.895'),(149,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:12:40.881'),(150,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:13:06.135'),(151,'EXPENSE_ADD','إضافة مصروف: 800 ج.م',2,'2026-02-20 18:14:26.568'),(152,'EXPENSE_UPDATE','تعديل مصروف #61',2,'2026-02-20 18:15:21.894'),(153,'EXPENSE_ADD','إضافة مصروف: 2983 ج.م',2,'2026-02-20 18:18:16.201'),(154,'EXPENSE_UPDATE','تعديل مصروف #62',2,'2026-02-20 18:18:58.945'),(155,'EXPENSE_ADD','إضافة مصروف: 11934 ج.م',2,'2026-02-20 18:25:33.754'),(156,'EXPENSE_UPDATE','تعديل مصروف #62',2,'2026-02-20 18:26:20.562'),(157,'EXPENSE_UPDATE','تعديل مصروف #62',2,'2026-02-20 18:26:40.683'),(158,'EXPENSE_ADD','إضافة مصروف: 5200 ج.م',2,'2026-02-20 18:31:06.256'),(159,'EXPENSE_UPDATE','تعديل مصروف #63',2,'2026-02-20 18:33:18.018'),(160,'EXPENSE_DELETE','حذف مصروف #63',2,'2026-02-20 18:34:56.633'),(161,'EXPENSE_ADD','إضافة مصروف: 11933.97 ج.م',2,'2026-02-20 18:36:32.030'),(162,'EXPENSE_DELETE','حذف مصروف #65',2,'2026-02-20 18:37:29.177'),(163,'EXPENSE_ADD','إضافة مصروف: 11934 ج.م',2,'2026-02-20 18:38:33.702'),(164,'LOGIN','تسجيل دخول',2,'2026-02-24 22:20:26.613'),(165,'EXPENSE_ADD','إضافة مصروف: 30 ج.م',2,'2026-02-24 22:22:26.662'),(166,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:22:50.518'),(167,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:23:07.874'),(168,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:23:26.537'),(169,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:25:21.424'),(170,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:25:32.626'),(171,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:27:22.545'),(172,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:27:36.516'),(173,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:28:32.908'),(174,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:28:57.225'),(175,'EXPENSE_ADD','إضافة مصروف: 110 ج.م',2,'2026-02-24 22:31:07.060'),(176,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-24 22:31:22.427'),(177,'EXPENSE_UPDATE','تعديل مصروف #66',2,'2026-02-24 22:33:37.167'),(178,'EXPENSE_ADD','إضافة مصروف: 5967 ج.م',2,'2026-02-24 22:34:24.455'),(179,'EXPENSE_UPDATE','تعديل مصروف #66',2,'2026-02-24 22:35:35.851'),(180,'EXPENSE_UPDATE','تعديل مصروف #70',2,'2026-02-24 22:35:46.956'),(181,'LOGIN','تسجيل دخول',2,'2026-02-28 19:23:47.759'),(182,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:26:23.994'),(183,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:26:52.457'),(184,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:28:56.932'),(185,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:29:13.361'),(186,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:29:30.459'),(187,'INCOME_UPDATE','تعديل دخل #171',2,'2026-02-28 19:30:56.184'),(188,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:31:21.796'),(189,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:31:39.576'),(190,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-28 19:33:01.156'),(191,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-28 19:33:13.649'),(192,'EXPENSE_UPDATE','تعديل مصروف #69',2,'2026-02-28 19:34:45.093'),(193,'LOGIN','تسجيل دخول',2,'2026-02-28 19:42:24.617'),(194,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:49:20.574'),(195,'LOGIN','تسجيل دخول',1,'2026-02-28 20:07:56.992'),(196,'LOGIN','تسجيل دخول',2,'2026-02-28 20:13:56.952'),(197,'LOGIN','تسجيل دخول',2,'2026-03-01 20:28:19.258'),(198,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-01 20:29:19.322'),(199,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-01 20:29:46.027'),(200,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-01 20:30:06.648'),(201,'EXPENSE_UPDATE','تعديل مصروف #70',2,'2026-03-01 20:31:37.783'),(202,'INCOME_UPDATE','تعديل دخل #181',2,'2026-03-01 20:33:52.003'),(203,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-02 21:39:34.864'),(204,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-02 21:40:36.327'),(205,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-02 21:41:37.208'),(206,'INCOME_UPDATE','تعديل دخل #184',2,'2026-03-05 15:20:24.298'),(207,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:20:47.153'),(208,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:21:01.681'),(209,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:21:19.777'),(210,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:23:22.398'),(211,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:23:34.830'),(212,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:23:49.856'),(213,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:25:00.474'),(214,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:25:11.711'),(215,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-03-05 15:26:11.932'),(216,'VEHICLE_ADD','إضافة سيارة: هيونداى  اكسنت RB ',2,'2026-03-05 15:30:04.431'),(217,'LOGIN','تسجيل دخول',2,'2026-03-08 22:13:52.751'),(218,'LOGIN','تسجيل دخول',1,'2026-03-09 15:10:32.628');
+INSERT INTO `activitylog` VALUES (1,'LOGIN','تسجيل دخول',1,'2026-02-06 22:12:33.357'),(2,'LOGIN','تسجيل دخول',1,'2026-02-06 22:12:55.040'),(3,'LOGIN','تسجيل دخول',1,'2026-02-06 22:13:02.414'),(4,'LOGIN','تسجيل دخول',1,'2026-02-06 22:24:03.432'),(5,'LOGIN','تسجيل دخول',1,'2026-02-06 22:27:29.712'),(6,'LOGIN','تسجيل دخول',1,'2026-02-06 22:48:54.104'),(7,'LOGIN','تسجيل دخول',1,'2026-02-06 22:50:55.276'),(8,'LOGIN','تسجيل دخول',1,'2026-02-06 22:50:55.430'),(9,'LOGIN','تسجيل دخول',1,'2026-02-06 22:54:17.785'),(10,'LOGIN','تسجيل دخول',1,'2026-02-06 22:55:12.936'),(11,'LOGIN','تسجيل دخول',1,'2026-02-06 22:55:25.466'),(12,'LOGIN','تسجيل دخول',1,'2026-02-06 22:56:06.195'),(13,'LOGIN','تسجيل دخول',1,'2026-02-06 22:56:14.642'),(14,'LOGIN','تسجيل دخول',1,'2026-02-06 22:57:22.655'),(15,'LOGIN','تسجيل دخول',1,'2026-02-06 23:03:00.387'),(16,'LOGIN','تسجيل دخول',1,'2026-02-06 23:17:22.703'),(17,'LOGIN','تسجيل دخول',1,'2026-02-07 00:05:21.007'),(18,'LOGIN','تسجيل دخول',1,'2026-02-07 00:06:42.657'),(19,'LOGIN','تسجيل دخول',1,'2026-02-07 00:18:59.479'),(20,'LOGIN','تسجيل دخول',1,'2026-02-07 00:19:31.601'),(21,'LOGIN','تسجيل دخول',1,'2026-02-07 00:19:39.565'),(22,'LOGIN','تسجيل دخول',1,'2026-02-07 00:19:56.660'),(23,'LOGIN','تسجيل دخول',1,'2026-02-07 00:20:51.078'),(24,'LOGIN','تسجيل دخول',1,'2026-02-07 00:27:14.237'),(25,'LOGIN','تسجيل دخول',1,'2026-02-07 00:27:40.388'),(26,'LOGIN','تسجيل دخول',1,'2026-02-07 00:29:32.875'),(27,'LOGIN','تسجيل دخول',1,'2026-02-07 00:32:42.337'),(28,'LOGIN','تسجيل دخول',1,'2026-02-07 00:33:09.466'),(29,'LOGIN','تسجيل دخول',1,'2026-02-07 00:34:26.166'),(30,'LOGIN','تسجيل دخول',1,'2026-02-07 00:34:34.535'),(31,'LOGIN','تسجيل دخول',1,'2026-02-07 00:34:43.394'),(32,'LOGIN','تسجيل دخول',1,'2026-02-07 00:35:07.256'),(33,'LOGIN','تسجيل دخول',1,'2026-02-07 00:35:11.527'),(34,'LOGIN','تسجيل دخول',1,'2026-02-07 00:35:32.437'),(35,'ADMIN_USER_EDIT','تعديل بيانات المستخدم #2: ahmed magdi',1,'2026-02-07 00:36:11.860'),(36,'LOGIN','تسجيل دخول',1,'2026-02-07 00:36:33.582'),(37,'ADMIN_USER_EDIT','تعديل بيانات المستخدم #2: ahmed magdi',1,'2026-02-07 00:36:33.693'),(38,'LOGIN','تسجيل دخول',2,'2026-02-07 00:36:40.960'),(39,'LOGIN','تسجيل دخول',1,'2026-02-07 01:18:47.560'),(40,'LOGIN','تسجيل دخول',2,'2026-02-07 01:21:14.760'),(41,'LOGIN','تسجيل دخول',2,'2026-02-07 01:31:51.760'),(42,'LOGIN','تسجيل دخول',2,'2026-02-07 01:36:40.715'),(43,'LOGIN','تسجيل دخول',2,'2026-02-07 01:42:19.438'),(44,'LOGIN','تسجيل دخول',2,'2026-02-07 01:50:28.813'),(45,'LOGIN','تسجيل دخول',2,'2026-02-07 01:51:09.465'),(46,'LOGIN','تسجيل دخول',2,'2026-02-07 01:56:00.710'),(47,'LOGIN','تسجيل دخول',1,'2026-02-13 16:41:18.780'),(48,'LOGIN','تسجيل دخول',2,'2026-02-13 16:45:58.111'),(49,'LOGIN','تسجيل دخول',2,'2026-02-13 17:20:54.056'),(50,'LOGIN','تسجيل دخول',2,'2026-02-13 17:30:20.085'),(51,'LOGIN','تسجيل دخول',2,'2026-02-13 17:30:24.875'),(52,'LOGIN','تسجيل دخول',2,'2026-02-13 17:30:37.564'),(53,'LOGIN','تسجيل دخول',2,'2026-02-13 17:30:38.286'),(54,'LOGIN','تسجيل دخول',2,'2026-02-13 17:31:09.757'),(55,'LOGIN','تسجيل دخول',2,'2026-02-13 17:31:41.024'),(56,'LOGIN','تسجيل دخول',1,'2026-02-14 10:14:01.351'),(57,'LOGIN','تسجيل دخول',2,'2026-02-14 10:16:20.452'),(58,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 10:53:00.704'),(59,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 10:53:45.417'),(60,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-14 10:54:22.170'),(61,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 10:55:59.524'),(62,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 10:56:41.536'),(63,'EXPENSE_ADD','إضافة مصروف: 660 ج.م',2,'2026-02-14 10:57:55.128'),(64,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 11:00:17.397'),(65,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 11:01:04.610'),(66,'EXPENSE_ADD','إضافة مصروف: 585 ج.م',2,'2026-02-14 11:02:22.318'),(67,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 12:21:17.927'),(68,'INCOME_DELETE','حذف دخل #74',2,'2026-02-14 12:21:39.563'),(69,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 12:22:02.558'),(70,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 12:22:36.850'),(71,'EXPENSE_ADD','إضافة مصروف: 547 ج.م',2,'2026-02-14 12:25:45.563'),(72,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 12:27:08.088'),(73,'EXPENSE_ADD','إضافة مصروف: 770 ج.م',2,'2026-02-14 12:28:20.798'),(74,'EXPENSE_ADD','إضافة مصروف: 2950 ج.م',2,'2026-02-14 12:28:56.411'),(75,'LOGIN','تسجيل دخول',1,'2026-02-14 18:15:53.603'),(76,'LOGIN','تسجيل دخول',2,'2026-02-14 18:16:52.309'),(77,'LOGIN','تسجيل دخول',2,'2026-02-14 18:36:20.018'),(78,'EXPENSE_ADD','إضافة مصروف: 10000 ج.م',2,'2026-02-14 18:54:41.328'),(79,'EXPENSE_UPDATE','تعديل مصروف #49',2,'2026-02-14 18:57:25.124'),(80,'EXPENSE_UPDATE','تعديل مصروف #51',2,'2026-02-14 19:03:21.572'),(81,'INCOME_DELETE','حذف دخل #132',2,'2026-02-14 19:23:29.338'),(82,'EXPENSE_DELETE','حذف مصروف #51',2,'2026-02-14 19:23:36.541'),(83,'EXPENSE_ADD','إضافة مصروف: 10000 ج.م',2,'2026-02-14 19:25:41.962'),(84,'EXPENSE_UPDATE','تعديل مصروف #52',2,'2026-02-14 19:27:00.908'),(85,'LOGIN','تسجيل دخول',2,'2026-02-14 19:48:25.410'),(86,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 19:55:59.015'),(87,'INCOME_UPDATE','تعديل دخل #133',2,'2026-02-14 19:56:20.793'),(88,'LOGIN','تسجيل دخول',2,'2026-02-14 20:07:04.818'),(89,'EXPENSE_ADD','إضافة مصروف: 675 ج.م',2,'2026-02-14 20:08:22.538'),(90,'EXPENSE_DELETE','حذف مصروف #43',2,'2026-02-14 20:10:22.522'),(91,'EXPENSE_UPDATE','تعديل مصروف #38',2,'2026-02-14 20:11:17.313'),(92,'EXPENSE_UPDATE','تعديل مصروف #47',2,'2026-02-14 20:11:45.967'),(93,'EXPENSE_UPDATE','تعديل مصروف #47',2,'2026-02-14 20:11:55.807'),(94,'EXPENSE_ADD','إضافة مصروف: 735 ج.م',2,'2026-02-14 20:14:05.055'),(95,'EXPENSE_UPDATE','تعديل مصروف #29',2,'2026-02-14 20:14:53.628'),(96,'EXPENSE_UPDATE','تعديل مصروف #28',2,'2026-02-14 20:15:07.118'),(97,'EXPENSE_ADD','إضافة مصروف: 600 ج.م',2,'2026-02-14 20:17:03.038'),(98,'EXPENSE_DELETE','حذف مصروف #25',2,'2026-02-14 20:37:43.261'),(99,'EXPENSE_DELETE','حذف مصروف #39',2,'2026-02-14 20:42:32.637'),(100,'EXPENSE_UPDATE','تعديل مصروف #54',2,'2026-02-14 20:44:56.827'),(101,'EXPENSE_UPDATE','تعديل مصروف #54',2,'2026-02-14 20:45:17.816'),(102,'EXPENSE_UPDATE','تعديل مصروف #54',2,'2026-02-14 20:45:35.936'),(103,'EXPENSE_DELETE','حذف مصروف #32',2,'2026-02-14 20:46:06.872'),(104,'EXPENSE_UPDATE','تعديل مصروف #44',2,'2026-02-14 20:48:07.492'),(105,'LOGIN','تسجيل دخول',2,'2026-02-14 20:55:13.365'),(106,'INCOME_UPDATE','تعديل دخل #126',2,'2026-02-14 21:00:30.028'),(107,'EXPENSE_UPDATE','تعديل مصروف #42',2,'2026-02-14 21:02:26.174'),(108,'EXPENSE_UPDATE','تعديل مصروف #48',2,'2026-02-14 21:17:26.504'),(109,'EXPENSE_DELETE','حذف مصروف #53',2,'2026-02-14 21:56:39.105'),(110,'EXPENSE_ADD','إضافة مصروف: 664 ج.م',2,'2026-02-14 22:02:46.367'),(111,'EXPENSE_ADD','إضافة مصروف: 750 ج.م',2,'2026-02-14 22:03:15.630'),(112,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-14 22:03:29.171'),(113,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:05:54.785'),(114,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:06:09.565'),(115,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:06:27.346'),(116,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:06:42.993'),(117,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:07:03.647'),(118,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:07:31.586'),(119,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:07:46.012'),(120,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:07:57.856'),(121,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:08:04.555'),(122,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:10:12.737'),(123,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:10:41.483'),(124,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:10:57.601'),(125,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:11:04.507'),(126,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:11:13.899'),(127,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:13:58.576'),(128,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:14:25.003'),(129,'INCOME_UPDATE','تعديل دخل #148',2,'2026-02-14 22:15:32.097'),(130,'INCOME_UPDATE','تعديل دخل #148',2,'2026-02-14 22:15:46.179'),(131,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:17:16.162'),(132,'INCOME_UPDATE','تعديل دخل #150',2,'2026-02-14 22:18:32.731'),(133,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:19:10.994'),(134,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-14 22:19:25.002'),(135,'EXPENSE_ADD','إضافة مصروف: 85 ج.م',2,'2026-02-14 22:40:06.465'),(136,'EXPENSE_UPDATE','تعديل مصروف #59',2,'2026-02-14 22:49:31.968'),(137,'LOGIN','تسجيل دخول',2,'2026-02-20 18:00:45.861'),(138,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:02:25.556'),(139,'INCOME_UPDATE','تعديل دخل #153',2,'2026-02-20 18:02:47.017'),(140,'INCOME_DELETE','حذف دخل #153',2,'2026-02-20 18:02:57.474'),(141,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:03:14.096'),(142,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:03:31.507'),(143,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:03:44.532'),(144,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:04:05.985'),(145,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:08:31.797'),(146,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:08:52.055'),(147,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:09:36.046'),(148,'EXPENSE_ADD','إضافة مصروف: 120 ج.م',2,'2026-02-20 18:10:40.895'),(149,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:12:40.881'),(150,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-20 18:13:06.135'),(151,'EXPENSE_ADD','إضافة مصروف: 800 ج.م',2,'2026-02-20 18:14:26.568'),(152,'EXPENSE_UPDATE','تعديل مصروف #61',2,'2026-02-20 18:15:21.894'),(153,'EXPENSE_ADD','إضافة مصروف: 2983 ج.م',2,'2026-02-20 18:18:16.201'),(154,'EXPENSE_UPDATE','تعديل مصروف #62',2,'2026-02-20 18:18:58.945'),(155,'EXPENSE_ADD','إضافة مصروف: 11934 ج.م',2,'2026-02-20 18:25:33.754'),(156,'EXPENSE_UPDATE','تعديل مصروف #62',2,'2026-02-20 18:26:20.562'),(157,'EXPENSE_UPDATE','تعديل مصروف #62',2,'2026-02-20 18:26:40.683'),(158,'EXPENSE_ADD','إضافة مصروف: 5200 ج.م',2,'2026-02-20 18:31:06.256'),(159,'EXPENSE_UPDATE','تعديل مصروف #63',2,'2026-02-20 18:33:18.018'),(160,'EXPENSE_DELETE','حذف مصروف #63',2,'2026-02-20 18:34:56.633'),(161,'EXPENSE_ADD','إضافة مصروف: 11933.97 ج.م',2,'2026-02-20 18:36:32.030'),(162,'EXPENSE_DELETE','حذف مصروف #65',2,'2026-02-20 18:37:29.177'),(163,'EXPENSE_ADD','إضافة مصروف: 11934 ج.م',2,'2026-02-20 18:38:33.702'),(164,'LOGIN','تسجيل دخول',2,'2026-02-24 22:20:26.613'),(165,'EXPENSE_ADD','إضافة مصروف: 30 ج.م',2,'2026-02-24 22:22:26.662'),(166,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:22:50.518'),(167,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:23:07.874'),(168,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:23:26.537'),(169,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:25:21.424'),(170,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:25:32.626'),(171,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:27:22.545'),(172,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:27:36.516'),(173,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:28:32.908'),(174,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-24 22:28:57.225'),(175,'EXPENSE_ADD','إضافة مصروف: 110 ج.م',2,'2026-02-24 22:31:07.060'),(176,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-24 22:31:22.427'),(177,'EXPENSE_UPDATE','تعديل مصروف #66',2,'2026-02-24 22:33:37.167'),(178,'EXPENSE_ADD','إضافة مصروف: 5967 ج.م',2,'2026-02-24 22:34:24.455'),(179,'EXPENSE_UPDATE','تعديل مصروف #66',2,'2026-02-24 22:35:35.851'),(180,'EXPENSE_UPDATE','تعديل مصروف #70',2,'2026-02-24 22:35:46.956'),(181,'LOGIN','تسجيل دخول',2,'2026-02-28 19:23:47.759'),(182,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:26:23.994'),(183,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:26:52.457'),(184,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:28:56.932'),(185,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:29:13.361'),(186,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:29:30.459'),(187,'INCOME_UPDATE','تعديل دخل #171',2,'2026-02-28 19:30:56.184'),(188,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:31:21.796'),(189,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:31:39.576'),(190,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-28 19:33:01.156'),(191,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-02-28 19:33:13.649'),(192,'EXPENSE_UPDATE','تعديل مصروف #69',2,'2026-02-28 19:34:45.093'),(193,'LOGIN','تسجيل دخول',2,'2026-02-28 19:42:24.617'),(194,'INCOME_ADD','إضافة 1 دخل',2,'2026-02-28 19:49:20.574'),(195,'LOGIN','تسجيل دخول',1,'2026-02-28 20:07:56.992'),(196,'LOGIN','تسجيل دخول',2,'2026-02-28 20:13:56.952'),(197,'LOGIN','تسجيل دخول',2,'2026-03-01 20:28:19.258'),(198,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-01 20:29:19.322'),(199,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-01 20:29:46.027'),(200,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-01 20:30:06.648'),(201,'EXPENSE_UPDATE','تعديل مصروف #70',2,'2026-03-01 20:31:37.783'),(202,'INCOME_UPDATE','تعديل دخل #181',2,'2026-03-01 20:33:52.003'),(203,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-02 21:39:34.864'),(204,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-02 21:40:36.327'),(205,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-02 21:41:37.208'),(206,'INCOME_UPDATE','تعديل دخل #184',2,'2026-03-05 15:20:24.298'),(207,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:20:47.153'),(208,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:21:01.681'),(209,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:21:19.777'),(210,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:23:22.398'),(211,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:23:34.830'),(212,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:23:49.856'),(213,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:25:00.474'),(214,'INCOME_ADD','إضافة 1 دخل',2,'2026-03-05 15:25:11.711'),(215,'EXPENSE_ADD','إضافة مصروف: 700 ج.م',2,'2026-03-05 15:26:11.932'),(216,'VEHICLE_ADD','إضافة سيارة: هيونداى  اكسنت RB ',2,'2026-03-05 15:30:04.431'),(217,'LOGIN','تسجيل دخول',2,'2026-03-09 22:13:52.751');
 /*!40000 ALTER TABLE `activitylog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,9 +65,9 @@ CREATE TABLE `ad` (
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   `updatedAt` datetime(3) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `ad_active_idx` (`active`),
-  KEY `ad_order_idx` (`order`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `Ad_active_idx` (`active`),
+  KEY `Ad_order_idx` (`order`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `ad` (
 
 LOCK TABLES `ad` WRITE;
 /*!40000 ALTER TABLE `ad` DISABLE KEYS */;
-INSERT INTO `ad` VALUES (7,'وفّر أكثر مع محطات وقود أدنوك','BANNER_TEXT','https://images.unsplash.com/photo-1545262810-a5c4ef7b1b8a?w=800&q=80','احصل على خصم 10% على كل تعبئة وقود عند استخدام بطاقة أدنوك للسائقين. العرض ساري حتى نهاية الشهر. سجّل الآن واستفد من التوفير!',NULL,NULL,1,0,'2026-03-09 15:55:16.898','2026-03-09 15:55:16.898'),(8,'تأمين شامل للسيارات بأقل قسط','BANNER_TEXT','https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80','تأمين شامل لسيارتك يبدأ من 150 جنيه شهرياً. تغطية كاملة ضد الحوادث والسرقة والكوارث الطبيعية. تواصل معنا الآن!',NULL,NULL,1,2,'2026-03-09 15:55:16.898','2026-03-09 15:55:16.898'),(9,'صيانة سيارتك بأفضل الأسعار','BANNER_LINK','https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=800&q=80',NULL,'https://www.autodoc.co.uk',NULL,1,1,'2026-03-09 15:55:16.898','2026-03-09 15:55:16.898');
+INSERT INTO `ad` VALUES (1,'وفّر أكثر مع محطات وقود أدنوك','BANNER_TEXT','https://image2url.com/r2/default/images/1770429243560-d7829391-9c69-4d26-810b-c749c3869659.png','احصل على خصم 10% على كل تعبئة وقود عند استخدام بطاقة أدنوك للسائقين. العرض ساري حتى نهاية الشهر. سجّل الآن واستفد من التوفير!',NULL,NULL,1,0,'2026-02-07 01:41:39.044','2026-02-07 01:54:16.128'),(2,'صيانة سيارتك بأفضل الأسعار','BANNER_LINK','https://image2url.com/r2/default/images/1770429304258-7237e42d-4eda-4cff-958f-e673bc80e5d2.png',NULL,'https://www.autodoc.co.uk',NULL,1,1,'2026-02-07 01:41:39.045','2026-02-07 01:55:13.335'),(3,'تأمين شامل للسيارات بأقل قسط','BANNER_TEXT','https://image2url.com/r2/default/images/1770429391999-f03dbe8b-73e1-4e20-8e2e-d092478616d5.jpg','تأمين شامل لسيارتك يبدأ من 150 جنيه شهرياً. تغطية كاملة ضد الحوادث والسرقة والكوارث الطبيعية. تواصل معنا الآن!',NULL,NULL,1,2,'2026-02-07 01:41:39.047','2026-02-07 01:56:41.257');
 /*!40000 ALTER TABLE `ad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,9 +97,9 @@ CREATE TABLE `alertsetting` (
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   `updatedAt` datetime(3) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `alertsetting_userId_alertType_key` (`userId`,`alertType`),
-  KEY `alertsetting_userId_idx` (`userId`),
-  CONSTRAINT `alertsetting_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `AlertSetting_userId_alertType_key` (`userId`,`alertType`),
+  KEY `AlertSetting_userId_idx` (`userId`),
+  CONSTRAINT `AlertSetting_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -130,12 +130,11 @@ CREATE TABLE `company` (
   `order` int NOT NULL DEFAULT '0',
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   `updatedAt` datetime(3) NOT NULL,
-  `logo` text COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `company_name_key` (`name`),
-  KEY `company_active_idx` (`active`),
-  KEY `company_order_idx` (`order`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  UNIQUE KEY `Company_name_key` (`name`),
+  KEY `Company_active_idx` (`active`),
+  KEY `Company_order_idx` (`order`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +143,6 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
-INSERT INTO `company` VALUES (1,'uber','اوبر','#ffffff',0,1,0,'2026-03-09 15:11:14.035','2026-03-09 15:42:05.171','https://play-lh.googleusercontent.com/n109V9dur2NFwV7Fbr8lwlU-isXRR0K7Q-pvp1LCyRwTVP2DfJaR-dklmXzK0MhQuz9E=w240-h480-rw'),(2,'DIDi','دي دى','#ffffff',0,1,1,'2026-03-09 15:12:54.667','2026-03-09 15:42:17.989','https://play-lh.googleusercontent.com/X1GZZp-EDG7u5r5LPQ0wvRb_DjBAWy10zlaZ9AOZ8j6nBK8-3EzZDZdHoeymgLzrH1E=w240-h480-rw'),(3,'indrive','اندريف','#ffffff',0,1,2,'2026-03-09 15:13:39.439','2026-03-09 15:42:11.833','https://play-lh.googleusercontent.com/2Sg4XierPqz0hVUA8rRNteutJhaUE4YMPQIN-wDIJ1x5piXeHA6G1-UWXj_n4R29F_o');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,8 +161,8 @@ CREATE TABLE `errorlog` (
   `userId` int DEFAULT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
-  KEY `errorlog_createdAt_idx` (`createdAt`),
-  KEY `errorlog_userId_idx` (`userId`)
+  KEY `ErrorLog_createdAt_idx` (`createdAt`),
+  KEY `ErrorLog_userId_idx` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -194,9 +192,9 @@ CREATE TABLE `expense` (
   `userId` int NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
-  KEY `expense_userId_idx` (`userId`),
-  KEY `expense_date_idx` (`date`),
-  CONSTRAINT `expense_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `Expense_userId_idx` (`userId`),
+  KEY `Expense_date_idx` (`date`),
+  CONSTRAINT `Expense_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -224,9 +222,9 @@ CREATE TABLE `goal` (
   `userId` int NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `goal_userId_month_key` (`userId`,`month`),
-  KEY `goal_userId_idx` (`userId`),
-  CONSTRAINT `goal_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `Goal_userId_month_key` (`userId`,`month`),
+  KEY `Goal_userId_idx` (`userId`),
+  CONSTRAINT `Goal_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -255,9 +253,9 @@ CREATE TABLE `income` (
   `userId` int NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
-  KEY `income_userId_idx` (`userId`),
-  KEY `income_date_idx` (`date`),
-  CONSTRAINT `income_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `Income_userId_idx` (`userId`),
+  KEY `Income_date_idx` (`date`),
+  CONSTRAINT `Income_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -293,10 +291,10 @@ CREATE TABLE `maintenanceitem` (
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   `updatedAt` datetime(3) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `maintenanceitem_userId_idx` (`userId`),
-  KEY `maintenanceitem_vehicleId_idx` (`vehicleId`),
-  CONSTRAINT `maintenanceitem_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `maintenanceitem_vehicleId_fkey` FOREIGN KEY (`vehicleId`) REFERENCES `vehicle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `MaintenanceItem_userId_idx` (`userId`),
+  KEY `MaintenanceItem_vehicleId_idx` (`vehicleId`),
+  CONSTRAINT `MaintenanceItem_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `MaintenanceItem_vehicleId_fkey` FOREIGN KEY (`vehicleId`) REFERENCES `vehicle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -324,8 +322,8 @@ CREATE TABLE `notification` (
   `userId` int NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
-  KEY `notification_userId_idx` (`userId`),
-  CONSTRAINT `notification_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `Notification_userId_idx` (`userId`),
+  CONSTRAINT `Notification_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -355,9 +353,9 @@ CREATE TABLE `notificationsetting` (
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   `updatedAt` datetime(3) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `notificationsetting_userId_settingType_key` (`userId`,`settingType`),
-  KEY `notificationsetting_userId_idx` (`userId`),
-  CONSTRAINT `notificationsetting_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `NotificationSetting_userId_settingType_key` (`userId`,`settingType`),
+  KEY `NotificationSetting_userId_idx` (`userId`),
+  CONSTRAINT `NotificationSetting_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -386,8 +384,8 @@ CREATE TABLE `settings` (
   `updatedAt` datetime(3) NOT NULL,
   `updatedBy` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `settings_key_key` (`key`),
-  KEY `settings_key_idx` (`key`)
+  UNIQUE KEY `Settings_key_key` (`key`),
+  KEY `Settings_key_idx` (`key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -421,10 +419,10 @@ CREATE TABLE `supportticket` (
   `resolvedAt` datetime(3) DEFAULT NULL,
   `resolvedBy` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `supportticket_userId_idx` (`userId`),
-  KEY `supportticket_status_idx` (`status`),
-  KEY `supportticket_createdAt_idx` (`createdAt`),
-  CONSTRAINT `supportticket_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `SupportTicket_userId_idx` (`userId`),
+  KEY `SupportTicket_status_idx` (`status`),
+  KEY `SupportTicket_createdAt_idx` (`createdAt`),
+  CONSTRAINT `SupportTicket_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -452,10 +450,10 @@ CREATE TABLE `ticketresponse` (
   `userId` int NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
-  KEY `ticketresponse_ticketId_idx` (`ticketId`),
-  KEY `ticketresponse_userId_idx` (`userId`),
-  CONSTRAINT `ticketresponse_ticketId_fkey` FOREIGN KEY (`ticketId`) REFERENCES `supportticket` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ticketresponse_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `TicketResponse_ticketId_idx` (`ticketId`),
+  KEY `TicketResponse_userId_idx` (`userId`),
+  CONSTRAINT `TicketResponse_ticketId_fkey` FOREIGN KEY (`ticketId`) REFERENCES `supportticket` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `TicketResponse_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -487,7 +485,7 @@ CREATE TABLE `user` (
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `profileImage` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `user_email_key` (`email`)
+  UNIQUE KEY `User_email_key` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -521,8 +519,8 @@ CREATE TABLE `vehicle` (
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   `updatedAt` datetime(3) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `vehicle_userId_idx` (`userId`),
-  CONSTRAINT `vehicle_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `Vehicle_userId_idx` (`userId`),
+  CONSTRAINT `Vehicle_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -553,9 +551,9 @@ CREATE TABLE `worksession` (
   `userId` int NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
-  KEY `worksession_userId_idx` (`userId`),
-  KEY `worksession_date_idx` (`date`),
-  CONSTRAINT `worksession_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `WorkSession_userId_idx` (`userId`),
+  KEY `WorkSession_date_idx` (`date`),
+  CONSTRAINT `WorkSession_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -577,4 +575,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-03-09 20:18:45
+-- Dump completed on 2026-03-09  1:24:43

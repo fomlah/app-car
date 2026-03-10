@@ -127,17 +127,17 @@ export default function IncomePage() {
                   onClick={() => toggleCompany(company)}
                   className="group relative focus:outline-none"
                 >
-                  <div className={`flex flex-col items-center justify-center gap-3 p-4 rounded-[2rem] border-2 transition-all duration-500 ${isSelected
-                    ? `${COMPANY_BORDER_ACTIVE[company] || 'border-primary'} shadow-xl shadow-black/5 scale-[1.02]`
-                    : 'border-transparent bg-card hover:bg-accent/50'
-                    }`} style={isSelected ? { backgroundColor: `${bgColor}20` } : {}}>
+                  <div className={`flex flex-col items-center justify-center gap-3 p-4 rounded-[2rem] border transition-all duration-300 ${isSelected
+                    ? `border-transparent shadow-lg scale-105`
+                    : 'border-border/20 bg-card/40 hover:bg-accent/40 backdrop-blur-sm'
+                    }`} style={isSelected ? { backgroundColor: `${bgColor}20`, boxShadow: `0 8px 30px -4px ${bgColor}40`, borderColor: `${bgColor}50` } : {}}>
                     <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:scale-110 overflow-hidden"
-                      style={{ backgroundColor: bgColor }}
+                      className="w-14 h-14 rounded-[1.2rem] flex items-center justify-center shadow-md transition-transform duration-500 group-hover:scale-105 overflow-hidden ring-1 ring-black/5 dark:ring-white/10"
+                      style={{ backgroundColor: companyObj.logo ? 'white' : bgColor }}
                     >
                       {companyObj.logo ? (
-                        <div className="w-full h-full p-1 bg-white flex items-center justify-center">
-                          <img src={companyObj.logo} alt={companyObj.nameAr || company} className="w-full h-full object-contain" />
+                        <div className="w-full h-full p-1.5 flex items-center justify-center">
+                          <img src={companyObj.logo} alt={companyObj.nameAr || company} className="w-full h-full object-contain drop-shadow-sm" />
                         </div>
                       ) : (
                         <span className={`font-black text-xs tracking-tighter ${COMPANY_TEXT_CLS[company] || 'text-white'}`}>
@@ -151,7 +151,7 @@ export default function IncomePage() {
                   </div>
                   {isSelected && (
                     <div
-                      className="absolute -top-1 -left-1 w-7 h-7 rounded-full flex items-center justify-center shadow-lg animate-in zoom-in duration-300"
+                      className="absolute -top-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center shadow-md animate-in zoom-in duration-300 ring-2 ring-background"
                       style={{ backgroundColor: bgColor }}
                     >
                       <Check size={14} className="text-white" strokeWidth={4} />
