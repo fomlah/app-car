@@ -30,10 +30,14 @@ export default function AddExpenseScreen({ navigation }: any) {
   const [customCategory, setCustomCategory] = useState('');
   const [amount, setAmount] = useState('');
   const [notes, setNotes] = useState('');
-  const [date, setDate] = useState(new Date());
+  const [dateText, setDateText] = useState(formatDate(new Date()));
   const [showPicker, setShowPicker] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+
+  const parsedDate = new Date(dateText);
+  const isValidDate = !isNaN(parsedDate.getTime());
+  const pickerDate = isValidDate ? parsedDate : new Date();
 
   const handleSave = async () => {
     const numAmount = parseFloat(amount);
@@ -47,7 +51,7 @@ export default function AddExpenseScreen({ navigation }: any) {
         category: selectedCategory,
         customCategory: selectedCategory === 'other' ? customCategory.trim() : undefined,
         amount: numAmount,
-        date: formatDate(date),
+        date: dateText,
         notes,
       });
       setSaved(true);
@@ -148,31 +152,34 @@ export default function AddExpenseScreen({ navigation }: any) {
           <Text style={[styles.sectionTitle, { color: colors.foreground }]}>التفاصيل</Text>
 
           {/* Date */}
-          <TouchableOpacity
-            style={[styles.detailRow, { backgroundColor: colors.card, borderColor: colors.border }]}
-            onPress={() => setShowPicker(true)}
-            activeOpacity={0.7}
-          >
-            <View style={[styles.detailIconBox, { backgroundColor: colors.accent }]}>
+          <View style={[styles.detailRow, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <TouchableOpacity
+              style={[styles.detailIconBox, { backgroundColor: colors.accent, padding: 8, borderRadius: 8 }]}
+              onPress={() => setShowPicker(true)}
+            >
               <Ionicons name="calendar-outline" size={20} color={colors.primary} />
-            </View>
+            </TouchableOpacity>
             <View style={styles.detailInfo}>
-              <Text style={[styles.detailLabel, { color: colors.muted }]}>التاريخ</Text>
-              <Text style={[styles.detailValue, { color: colors.foreground }]}>
-                {formatDate(date)}
-              </Text>
+              <Text style={[styles.detailLabel, { color: colors.muted }]}>التاريخ (YYYY-MM-DD)</Text>
+              <TextInput
+                style={[styles.dateInput, { color: colors.foreground }]}
+                value={dateText}
+                onChangeText={setDateText}
+                placeholder="YYYY-MM-DD"
+                placeholderTextColor={colors.muted}
+                textAlign="right"
+              />
             </View>
-            <Ionicons name="chevron-forward" size={18} color={colors.muted} />
-          </TouchableOpacity>
+          </View>
 
           {showPicker && (
             <DateTimePicker
-              value={date}
+              value={pickerDate}
               mode="date"
               display="default"
               onChange={(event, selectedDate) => {
                 setShowPicker(Platform.OS === 'ios');
-                if (selectedDate) setDate(selectedDate);
+                if (selectedDate) setDateText(formatDate(selectedDate));
               }}
             />
           )}
@@ -270,6 +277,14 @@ const styles = StyleSheet.create({
   detailInfo: { flex: 1 },
   detailLabel: { fontSize: 11, marginBottom: 2 },
   detailValue: { fontSize: 14, fontWeight: '600' },
+  dateInput: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginTop: 2,
+    paddingVertical: 0,
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+  },
   bottomBar: {
     position: 'absolute', bottom: 0, left: 0, right: 0,
     padding: 16, borderTopWidth: 1,

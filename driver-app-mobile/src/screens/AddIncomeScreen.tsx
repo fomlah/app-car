@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, ScrollView, Alert, Platform } from 'react-native';
 import Text from '../components/CustomText';
+import TextInput from '../components/CustomTextInput';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../contexts/ThemeContext';
@@ -23,13 +24,14 @@ export default function AddIncomeScreen({ navigation }: any) {
   const { companies } = useCompanies();
   const [selectedPlatform, setSelectedPlatform] = useState('');
   const [amount, setAmount] = useState('0');
-  const [date, setDate] = useState(new Date());
+  const [dateText, setDateText] = useState(formatDate(new Date()));
   const [showPicker, setShowPicker] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  const isToday = new Date().toDateString() === date.toDateString();
-  const dateStr = `${date.getDate()} ${MONTH_NAMES[date.getMonth()]}`;
+  const parsedDate = new Date(dateText);
+  const isValidDate = !isNaN(parsedDate.getTime());
+  const pickerDate = isValidDate ? parsedDate : new Date();
 
   const handleKeyPress = (key: string) => {
     if (key === 'back') {
@@ -56,7 +58,7 @@ export default function AddIncomeScreen({ navigation }: any) {
       await addIncome({
         company: selectedPlatform,
         amount: numAmount,
-        date: formatDate(date),
+        date: dateText,
         notes: '',
       });
       setSaved(true);
@@ -85,31 +87,33 @@ export default function AddIncomeScreen({ navigation }: any) {
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         {/* Date Selector */}
         <View style={[styles.dateCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
-          <View style={styles.dateLeft}>
-            <View style={[styles.dateIconBox, { backgroundColor: colors.accent, borderColor: colors.border }]}>
-              <Ionicons name="calendar-outline" size={22} color={colors.primary} />
-            </View>
-            <View>
-              <Text style={[styles.dateLabel, { color: colors.muted }]}>التاريخ</Text>
-              <Text style={[styles.dateValue, { color: colors.foreground }]}>{isToday ? 'اليوم، ' : ''}{dateStr}</Text>
-            </View>
-          </View>
           <TouchableOpacity
-            style={[styles.changeDateBtn, { backgroundColor: colors.accent, borderColor: colors.border }]}
+            style={[styles.dateIconBox, { backgroundColor: colors.accent, borderColor: colors.border }]}
             onPress={() => setShowPicker(true)}
           >
-            <Text style={[styles.changeDateText, { color: colors.foreground }]}>تغيير</Text>
+            <Ionicons name="calendar-outline" size={22} color={colors.primary} />
           </TouchableOpacity>
+          <View style={{ flex: 1, marginLeft: 12 }}>
+            <Text style={[styles.dateLabel, { color: colors.muted }]}>التاريخ (YYYY-MM-DD)</Text>
+            <TextInput
+              style={[styles.dateInput, { color: colors.foreground }]}
+              value={dateText}
+              onChangeText={setDateText}
+              placeholder="YYYY-MM-DD"
+              placeholderTextColor={colors.muted}
+              textAlign="right"
+            />
+          </View>
         </View>
 
         {showPicker && (
           <DateTimePicker
-            value={date}
+            value={pickerDate}
             mode="date"
             display="default"
             onChange={(event, selectedDate) => {
               setShowPicker(Platform.OS === 'ios');
-              if (selectedDate) setDate(selectedDate);
+              if (selectedDate) setDateText(formatDate(selectedDate));
             }}
           />
         )}
@@ -247,6 +251,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   changeDateText: { fontSize: 13, fontWeight: '700' },
+  dateInput: {
+    fontSize: 16,
+    fontWeight: '700',
+    marginTop: 4,
+    paddingVertical: 0,
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+  },
   sectionLabel: {
     fontSize: 13, fontWeight: '700',
     textTransform: 'uppercase', letterSpacing: 1,

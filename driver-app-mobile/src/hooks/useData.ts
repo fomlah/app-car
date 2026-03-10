@@ -134,9 +134,24 @@ export function useCompanies() {
   const refresh = useCallback(async () => {
     try {
       const data = await companiesAPI.getAll();
-      setCompanies(data);
+      if (data && data.length > 0) {
+        setCompanies(data);
+      } else {
+        // Fallback to default companies if empty
+        setCompanies([
+          { id: '1', name: 'Uber', nameAr: 'أوبر', isActive: true, order: 1, createdAt: '', updatedAt: '' },
+          { id: '2', name: 'Didi', nameAr: 'ديدي', isActive: true, order: 2, createdAt: '', updatedAt: '' },
+          { id: '3', name: 'InDrive', nameAr: 'ان درايف', isActive: true, order: 3, createdAt: '', updatedAt: '' },
+        ]);
+      }
     } catch (err) {
       console.error('Failed to fetch companies:', err);
+      // Fallback on error
+      setCompanies([
+        { id: '1', name: 'Uber', nameAr: 'أوبر', isActive: true, order: 1, createdAt: '', updatedAt: '' },
+        { id: '2', name: 'Didi', nameAr: 'ديدي', isActive: true, order: 2, createdAt: '', updatedAt: '' },
+        { id: '3', name: 'InDrive', nameAr: 'ان درايف', isActive: true, order: 3, createdAt: '', updatedAt: '' },
+      ]);
     } finally {
       setLoading(false);
     }
