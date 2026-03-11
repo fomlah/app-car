@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../contexts/ThemeContext';
 import { useIncomes, useCompanies } from '../hooks/useData';
 import { COMPANY_COLORS } from '../constants/theme';
+import { parseLocalizedNumber } from '../utils/numbers';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const MONTH_NAMES = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
@@ -44,7 +45,7 @@ export default function AddIncomeScreen({ navigation }: any) {
   };
 
   const handleSave = async () => {
-    const numAmount = parseFloat(amount);
+    const numAmount = parseLocalizedNumber(amount);
     if (numAmount <= 0) {
       Alert.alert('خطأ', 'يرجى إدخال مبلغ صحيح');
       return;

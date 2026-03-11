@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../contexts/ThemeContext';
 import { useExpenses } from '../hooks/useData';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { parseLocalizedNumber } from '../utils/numbers';
 
 const CATEGORIES = [
   { id: 'fuel', label: 'وقود', icon: 'flame', color: '#20df6c' },
@@ -40,7 +41,7 @@ export default function AddExpenseScreen({ navigation }: any) {
   const pickerDate = isValidDate ? parsedDate : new Date();
 
   const handleSave = async () => {
-    const numAmount = parseFloat(amount);
+    const numAmount = parseLocalizedNumber(amount);
     if (!numAmount || numAmount <= 0) {
       Alert.alert('خطأ', 'يرجى إدخال مبلغ صحيح');
       return;

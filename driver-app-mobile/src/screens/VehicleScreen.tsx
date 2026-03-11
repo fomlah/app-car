@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, TouchableOpacity, StyleSheet, ScrollView, Modal, ActivityIndicator, Switch,  } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView, Modal, ActivityIndicator, Switch, } from 'react-native';
 import Text from '../components/CustomText';
 import TextInput from '../components/CustomTextInput';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../contexts/ThemeContext';
 import { vehiclesAPI, maintenanceAPI } from '../services/api';
+import { parseLocalizedNumber } from '../utils/numbers';
 
 interface MaintItem {
   id: number;
@@ -81,9 +82,9 @@ export default function VehicleScreen({ navigation }: any) {
     setSaving(true);
     try {
       await vehiclesAPI.create({
-        name: vName, model: vModel, year: parseInt(vYear),
-        licensePlate: vPlate || null, odometer: parseInt(vOdometer) || 0,
-        avgConsumption: parseFloat(vConsumption) || 0,
+        name: vName, model: vModel, year: parseLocalizedNumber(vYear),
+        licensePlate: vPlate || null, odometer: parseLocalizedNumber(vOdometer) || 0,
+        avgConsumption: parseLocalizedNumber(vConsumption) || 0,
       });
       await loadVehicles();
       setShowAddVehicle(false);
@@ -97,10 +98,11 @@ export default function VehicleScreen({ navigation }: any) {
     if (!mName || !mNameAr || !activeVehicle) return;
     setSaving(true);
     try {
+      const remaining = parseLocalizedNumber(mRemainingPct);
       await maintenanceAPI.update(0, {
         name: mName, nameAr: mNameAr, vehicleId: activeVehicle.id,
-        remainingPct: parseInt(mRemainingPct),
-        status: parseInt(mRemainingPct) < 30 ? 'warning' : 'good',
+        remainingPct: remaining,
+        status: remaining < 30 ? 'warning' : 'good',
       });
       await loadVehicles();
       setShowAddMaint(false);
@@ -113,7 +115,7 @@ export default function VehicleScreen({ navigation }: any) {
     try {
       await maintenanceAPI.update(id, { enabled: !enabled });
       await loadVehicles();
-    } catch {}
+    } catch { }
   };
 
   if (loading) {
@@ -179,17 +181,17 @@ export default function VehicleScreen({ navigation }: any) {
           {/* Maintenance Header */}
           <View style={styles.maintHeader}>
             <Text style={[styles.maintTitle, { color: colors.foreground }]}>جدول الصيانة</Text>
-            <Text style={[styles.maintCount, { color: colors.muted }]}>{activeVehicle.maintenanceItems.length} عنصر</Text>
+            <Text style={[styles.maintCount, { color: colors.muted }]}>{(activeVehicle.maintenanceItems || []).length} عنصر</Text>
           </View>
 
           {/* Maintenance List */}
-          {activeVehicle.maintenanceItems.length === 0 ? (
+          {(activeVehicle.maintenanceItems || []).length === 0 ? (
             <View style={[styles.emptyMaint, { backgroundColor: colors.card, borderColor: colors.border }]}>
               <Ionicons name="settings-outline" size={28} color={colors.muted} style={{ opacity: 0.3 }} />
               <Text style={[styles.emptyMaintText, { color: colors.muted }]}>لا توجد عناصر صيانة بعد</Text>
             </View>
           ) : (
-            activeVehicle.maintenanceItems.map(item => {
+            (activeVehicle.maintenanceItems || []).map(item => {
               const sc = getStatusColor(item.status);
               return (
                 <View key={item.id} style={[styles.maintCard, { backgroundColor: colors.card, borderColor: colors.border }]}>

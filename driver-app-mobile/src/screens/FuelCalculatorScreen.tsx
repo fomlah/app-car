@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, ScrollView,  } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView, } from 'react-native';
 import Text from '../components/CustomText';
 import TextInput from '../components/CustomTextInput';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../contexts/ThemeContext';
+import { parseLocalizedNumber } from '../utils/numbers';
 
 const FUEL_PRICES = [
   { label: 'بنزين 80', price: '11.00' },
@@ -20,9 +21,9 @@ export default function FuelCalculatorScreen({ navigation }: any) {
   const [result, setResult] = useState<{ liters: number; cost: number; costPerKm: number } | null>(null);
 
   const calculate = () => {
-    const d = parseFloat(distance);
-    const c = parseFloat(consumption);
-    const p = parseFloat(fuelPrice);
+    const d = parseLocalizedNumber(distance);
+    const c = parseLocalizedNumber(consumption);
+    const p = parseLocalizedNumber(fuelPrice);
     if (!d || !c || !p || d <= 0 || c <= 0 || p <= 0) return;
     const liters = (d * c) / 100;
     const cost = liters * p;

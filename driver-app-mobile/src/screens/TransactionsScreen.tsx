@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../contexts/ThemeContext';
 import { useIncomes, useExpenses, useCompanies, Income, Expense, Company } from '../hooks/useData';
 import { COMPANY_COLORS, EXPENSE_CATEGORIES, getCategoryLabel, getCategoryIcon } from '../constants/theme';
+import { parseLocalizedNumber } from '../utils/numbers';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 // Cross-platform confirm dialog
@@ -198,7 +199,8 @@ export default function TransactionsScreen({ navigation }: any) {
   };
 
   const handleSaveEdit = async () => {
-    if (!editItem || !editAmount || parseFloat(editAmount) <= 0) {
+    const numAmount = parseLocalizedNumber(editAmount);
+    if (!editItem || !editAmount || numAmount <= 0) {
       Alert.alert('خطأ', 'يرجى إدخال مبلغ صحيح');
       return;
     }
@@ -206,14 +208,14 @@ export default function TransactionsScreen({ navigation }: any) {
     try {
       if (editItem.type === 'income') {
         await updateIncome(editItem.id, {
-          amount: parseFloat(editAmount),
+          amount: numAmount,
           date: editDate,
           company: editCompany,
           notes: editNotes,
         });
       } else {
         await updateExpense(editItem.id, {
-          amount: parseFloat(editAmount),
+          amount: numAmount,
           date: editDate,
           category: editCategory,
           notes: editNotes,

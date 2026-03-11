@@ -8,6 +8,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { workSessionsAPI } from '../services/api';
 import { COMPANY_COLORS } from '../constants/theme';
 import { useCompanies } from '../hooks/useData';
+import { parseLocalizedNumber } from '../utils/numbers';
 
 interface WorkSession {
   id: number;
@@ -20,14 +21,28 @@ interface WorkSession {
 }
 
 function calcDuration(start: string, end: string): number {
-  const [sh, sm] = start.split(':').map(Number);
-  const [eh, em] = end.split(':').map(Number);
+  if (!start || !end) return 0;
+
+  const parseTime = (timeStr: string) => {
+    // Check if format is properly given as HH:MM or similar by safely parsing localized numbers.
+    const parts = timeStr.split(':');
+    if (parts.length < 2) return { h: 0, m: 0 };
+    return {
+      h: Math.max(0, parseLocalizedNumber(parts[0])),
+      m: Math.max(0, parseLocalizedNumber(parts[1]))
+    };
+  };
+
+  const { h: sh, m: sm } = parseTime(start);
+  const { h: eh, m: em } = parseTime(end);
+
   let mins = (eh * 60 + em) - (sh * 60 + sm);
   if (mins < 0) mins += 24 * 60;
-  return mins;
+  return isNaN(mins) ? 0 : mins;
 }
 
 function formatDuration(mins: number): string {
+  if (isNaN(mins)) return '0 ساعة';
   const h = Math.floor(mins / 60);
   const m = mins % 60;
   return `${h} ساعة${m > 0 ? ` و ${m} دقيقة` : ''}`;

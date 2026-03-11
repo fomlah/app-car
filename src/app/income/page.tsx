@@ -86,24 +86,30 @@ export default function IncomePage() {
 
         {/* Date Section */}
         <div className="px-4 pt-6">
-          <div className="bg-card border border-border/60 rounded-[2rem] p-5 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-2xl bg-accent flex items-center justify-center text-primary">
-                <Calendar size={20} />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-bold text-muted uppercase tracking-widest">{LABELS.common.date}</span>
-                <span className="text-sm font-bold text-foreground">
-                  {date ? format(parseISO(date), 'EEEE، d MMMM yyyy', { locale: ar }) : ''}
-                </span>
-              </div>
+          <div className="flex items-center justify-between p-4 rounded-[1.5rem] border border-border/60 bg-card shadow-sm">
+            <div className="relative w-12 h-12 rounded-[1rem] bg-accent border border-border/50 flex items-center justify-center cursor-pointer overflow-hidden group shrink-0">
+              <Calendar size={22} className="text-primary group-hover:scale-110 transition-transform" />
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="absolute inset-0 w-[200%] h-[200%] -top-1/2 -left-1/2 opacity-0 cursor-pointer"
+              />
             </div>
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="w-full bg-accent/50 border-none rounded-xl px-4 py-3 text-sm font-bold text-foreground focus:ring-2 focus:ring-primary/20 transition-all"
-            />
+            
+            <div className="flex-1 mr-4 flex flex-col justify-center text-right">
+              <span className="text-[11px] font-bold text-muted uppercase tracking-widest mb-1.5 block">
+                التاريخ (YYYY-MM-DD)
+              </span>
+              <input
+                type="text"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                placeholder="YYYY-MM-DD"
+                className="w-full bg-transparent border-none text-right text-base font-bold text-foreground focus:outline-none focus:ring-0 p-0 placeholder:text-muted/50"
+                dir="ltr"
+              />
+            </div>
           </div>
         </div>
 
